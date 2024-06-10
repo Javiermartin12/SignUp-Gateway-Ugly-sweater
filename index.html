@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bungee&family=Hedvig+Letters+Serif:opsz@12..24&family=Noto+Sans:wght@100;300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/script.js" defer></script>
+  <script src="js/timer.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="assets/sweaterico.png">
+  <title>Not So Ugly Sweaters</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1>Not So Ugly sweaters</h1>
+  </header>
+  <div class="timeout-error hide"></div>
+  <!--MAIN PAGE-->
+  <div class="mainpage">
+
+
+    <section class="product-hero">
+      <div class="product-preview">
+        <div class="product-preview__vertical">
+          <img src="assets/jersey_red.png" alt="" id="red1">
+          <img src="assets/jersey_red2.png" alt="" id="red2">
+          <img src="assets/jersey_red3.png" alt="" id="red3">
+          <img src="assets/jersey_red4.png" alt="" id="red4">
+        </div>
+        <div class="product-preview__main">
+          <img src="assets/jersey_red.png" alt="" id="mainPreview">
+        </div>
+      </div>
+
+
+      <div class="product-buy">
+        <div class="product-buy__head">
+          <h1>Ugly christmas sweater</h1>
+          <p id="currentColor" class="currentColor">Color: Red</p>
+          <p>Price</p>
+          <h2>14,55 €</h2>
+        </div>
+
+
+        <div class="product-buy__size">
+          <div class="dropdown">
+            <button class="dropbtn" id="selectedOption">
+              Select a size
+              <div class="arrow"></div>
+            </button>
+
+            <div class="dropdown-content">
+              <a href="#">S</a>
+              <a href="#">M</a>
+              <a href="#">L</a>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="product-buy__colors">
+          <div class="product-buy__colors__opt">
+            <img class="sweatercoloroption" src="assets/jersey_red.png" alt="" id="red">
+            <img class="sweatercoloroption" src="assets/jersey_blue.png" alt="" id="blue">
+            <img class="sweatercoloroption" src="assets/jersey_green.png" alt="" id="green">
+          </div>
+        </div>
+
+
+        <div class="product-buy__cta">
+          <button class="button" id="showContentButton">buy</button>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+
+  <div class="form__global__container" id="formContainer" style="display: none;">
+
+    <!--STEP1-PROFILE-->
+    <div class="progressbar">
+      <div class="progress" id="progress"></div>
+
+      <div class="progressbar-step progress-step-active" data-title="Profile"></div>
+      <div class="progressbar-step" data-title="Address"></div>
+      <div class="progressbar-step" data-title="Shipping"></div>
+      <div class="progressbar-step" data-title="Finish"></div>
+    </div>
+    <section class="form-step section-formulary-profile form-step-active">
+
+      <h2>Profile</h2>
+      <form action="/process-form" method="post" autocomplete="on">
+
+        <!--Tags from Username-->
+
+        <label for="userName">Username</label>
+        <input class="form__input" type="text" id="userName" autocomplete="username" minlength="5" required>
+        <p id="validationUserName" class="errormessage">Please enter a valid username.</p>
+
+        <!--Tags from email-->
+
+        <label for="email">Email</label>
+        <input class="form__input" type="email" name="email" id="email" autocomplete="email" maxlength="50" required>
+        <p id="validationEmail" class="errormessage">Please enter a valid email.</p>
+
+        <!--Tags from password-->
+
+        <label for="password">Password</label>
+        <input class="form__input" type="password" name="password" id="password">
+        <p id="validationPassword" class="errormessage">Please enter a valid password.</p>
+        <p id="validationCharacterPassword" class="errormessage"> Password must contain at least one number, one
+          uppercase letter, one lowercase letter, and one special character.</p>
+        <button data-showPassword class="passwordbutton" type="button"><img class="passicon"
+            src="assets/showpasswordico.png"></button>
+
+        <!--Tags to confirm password-->
+
+        <label for="confirmPassword">Confirm password</label>
+        <input class="form__input" type="password" name="confirmPassword" id="confirmPassword">
+        <p id="validationConfirmPassword" class="errormessage">Please enter the same password.</p>
+
+        <button id="showConfirmPassword" class="passwordbutton" type="button"><img class="passicon"
+            src="assets/showpasswordico.png">
+        </button>
+        <!--cambio id showConfirmPasswordButton a showConfirmPassword-->
+
+        <!--Tags from button-clear and next- -->
+
+        <div class="bottom-buttons">
+          <button type="reset"> Clear form</button>
+          <button data-next type="button">Next</button>
+        </div>
+      </form>
+    </section>
+
+    <!--STEP2-ADDRESS-->
+
+    <section id="sept3-address" class="form-step section-address-form">
+      <form id="address-form" action="/action_page.php" autocomplete="on">
+        <h2>Address</h2>
+        <div>
+          <label for="firstname">First Name </label>
+          <input class="form__input" type="text" id="firstname" name="firstname" maxlength="20" required>
+          <p id="validationfirstname" class="errormessage">First name is invalid</p>
+        </div>
+        <div>
+          <label for="lastname">Last Name</label>
+          <input class="form__input" type="text" id="lastname" name="lastname" maxlength="20" required>
+          <p id="validationlastname" class="errormessage">Last name is invalid</p>
+
+        </div>
+        <div>
+          <label for="bday">Birthday</label>
+          <input class="form__input" type="date" id="bday" name="bday" required>
+          <p id="validationbday" class="errormessage">Birthday is invalid</p>
+
+        </div>
+        <div>
+          <label for="address1">Address 1</label>
+          <input class="form__input" type="text" id="address1" name="address1" maxlength="50" required>
+          <p id="validationaddress" class="errormessage">Address is invalid</p>
+
+        </div>
+        <div>
+          <label for="address2">Address 2</label>
+          <input class="form__input" type="text" id="address2" name="address2" maxlength="50">
+        </div>
+        <div>
+          <label for="pcode">Postal code</label>
+          <input class="form__input" type="number" id="pcode" name="pcode" min="00000" max="99999"
+            onKeyPress="if(this.value.length==5) return false;" tabindex="0" required>
+          <p id="validationpcode" class="errormessage"> Postal code is invalid</p>
+        </div>
+        <div>
+          <label for="country-dropdown">Country</label>
+          <select class="form__dropdown" id="country-dropdown" required>
+            <option class="country-option" value="Andorra">Andorra</option>
+            <option class="country-option" value="Spain">Spain</option>
+            <option class="country-option" value="France">France</option>
+            <option class="country-option" value="Germany">Germany</option>
+            <option class="country-option" value="Greece">Greece</option>
+          </select>
+        </div>
+        <div>
+          <label for="prefix-dropdown">Phone</label>
+          <select class="form__dropdown" id="prefix-dropdown" required>
+            <option class="prefix-option" value="+376">AND</option>
+            <option class="prefix-option" value="+34">SPA</option>
+            <option class="prefix-option" value="+33">FRA</option>
+            <option class="prefix-option" value="+49">GER</option>
+            <option class="prefix-option" value="+30">GRC</option>
+          </select>
+          </select>
+          <input class="form__input" id="phone" type="tel" pattern="\([0-9]{3}\) [0-9]{3}[ -][0-9]{3}"
+            paceholder="Your phone number" maxlength="9" autocomplete="phone" required>
+          <p id="validationphone" class="errormessage"> Phone number is invalid</p>
+
+        </div>
+        <div>
+          <label><input class="form__checkbox" id="checkaddress" type="checkbox">This is my regular address</label>
+        </div>
+        <div class="bottom-buttons">
+          <button type="reset"> Clear form</button>
+          <button data-next type="button">Next</button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- STEP 3 shipping !-->
+
+    <section class="form-step section-shipping-form">
+      <form action="/shipping-form" method="post" autocomplete="on">
+        <div class="flex-container">
+          <h2>Shipping</h2>
+
+          <div class="shipping-type">
+            <fieldset name="shippingForm" id="shipping-form">
+              <h3>Shipping type</h3>
+              <div class="shipping-option">
+                <input type="radio" name="shipping-option" id="freeShipping" value="3" checked>
+                <label for="freeShipping">Free shipping (72H)</label>
+              </div>
+
+              <div class="shipping-option">
+                <input type="radio" name="shipping-option" id="extraShipping" value="2">
+                <label for="extraShipping">Extra shipping (48H) 4.99€</label>
+              </div>
+
+              <div class="shipping-option">
+                <input type="radio" name="shipping-option" id="premiumShipping" value="1">
+                <label for="premiumShipping">Premium shipping (24H) 9.99€</label>
+              </div>
+
+              <div data-delivery-estimation class="delivery-estimation"></div>
+
+            </fieldset>
+          </div>
+
+          <div id="itIsAGift" class="gift-option">
+            <input type="checkbox" name=gift id="gift">
+            <label for="gift">Is it a gift?</label>
+            <br>
+            <div id="giftOption" class="gift-option__hidden">
+              <label for="giftMessage">Gift message:</label>
+              <br>
+              <textarea id="giftMessage" name="giftmessage" rows="5" cols="30" maxlength="">
+              </textarea>
+              <br>
+              <label for="giftWrapper">Gift wrapper image:</label>
+              <br>
+              <input class="btn" type="file" id="giftWrapper" name="giftwrapper" accept="image/png, image/jpeg" />
+            </div>
+
+          </div>
+
+
+          <!--Tags from button-clear and next- -->
+
+          <div class="bottom-buttons">
+            <button type="reset" value="clear form">Clear form</button>
+            <button data-next type="button">Next</button>
+          </div>
+      </form>
+    </section>
+
+    <!--STEP4-FINISH-->
+    <section class="form-step finished-container">
+      <!-- Add form-step-active class to the Finish step -->
+
+      <h2>Your purchase</h2>
+      <div class="left-wrapper-finish">
+
+        <div class="left-wrapper-finish__inside">
+
+          <img class="gaspar-sweater">
+
+          <div class="product-finish-text">
+            <h3 id="product-model">Product model</h3>
+            <p id="purchasesize">Size: </p>
+            <p>Amount: 1</p>
+            <p id="purchasecolor">Color: </p>
+
+          </div>
+          <div class="product-finish__delivery">
+            <h3>Estimate delivery date:</h3>
+            <p data-delivery-estimation class="delivery-estimation"></p>
+          </div>
+          <div class="finished-checkbox">
+            <label class="form-checkbox">
+              <input class="form-checkbox__input" id="conditions" type="checkbox" name="conditions"
+                value="conditions"><span class="form-checkbox__show-checkbox"></span>
+            </label>
+            <label for="conditions">I have read and I accept the terms and conditions.</label>
+            <!--<p class="text-form-error hide p-buy-now-validation">Please accept the terms and conditions</p><br> -->
+          </div>
+        </div>
+
+        <div class="right-wrapper-finish">
+
+          <h4>Your order</h4>
+          <hr>
+          <p>Sweater: 14,55 €</p>
+          <p id="shippingPrice"></p>
+          <hr>
+          <p id="totalPrice">Total: </p>
+
+        </div>
+
+      </div>
+      <div class="bottom-buttons">
+        <button id="btn-buy-now-finished" class="buybutton" type="button">Buy now</button>
+      </div>
+    </section>
+
+    <!--THANKYOU-->
+    <section class="form-step thankyou-page">
+      <h2>Your order is complete!</h2>
+      <h3>Thank you for your order!</h3>
+      <div class="left-wrapper-finish">
+        <div class="left-wrapper-finish__inside">
+
+          <img class="gaspar-sweater" id="gaspar-sweater-thankyou">
+
+          <div class="product-finish-text">
+            <h3 id="product-model">Product model</h3>
+            <p id="purchasesizeFinish">Size: </p>
+            <p>Amount: 1 </p>
+
+            <p id="purchasecolorFinish">Color: </p>
+          </div>
+          <div>
+            <h3>Estimate delivery date:</h3>
+            <p data-delivery-estimation class="delivery-estimation"></p>
+          </div>
+        </div>
+
+        <div class="right-wrapper-finish">
+
+          <h4>Your order</h4>
+          <hr>
+          <p>Sweater: 14,55 €</p>
+          <p id="shippingPriceFinish"></p>
+          <hr>
+          <p id="totalPriceFinish">Total: </p>
+
+        </div>
+      </div>
+      <div class="finished-checkbox">
+        <p id="total-time">Your purchase took: <b></b></p>
+      </div>
+      <a href="index.html" class="btn-home">Go to home page</a>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <p>© Squad Turing</p>
+  </footer>
+</body>
+
+</html>
